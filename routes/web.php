@@ -15,7 +15,7 @@ Route::get("/", [LinkController::class, 'index'])
 Route::post("/links", [LinkController::class, 'store'])
     ->name('links.store');
 
-Route::delete("/links", [LinkController::class, 'destroy'])
+Route::delete("/links/{link}", [LinkController::class, 'destroy'])
     ->name('links.destroy');
 
 Route::get("/r/{code}", [RedirectController::class])
