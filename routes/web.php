@@ -1,0 +1,22 @@
+<?php
+
+use App\Http\Controllers\LinkController;
+use App\Http\Controllers\RedirectController;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+Route::get('/', function () {
+    return Inertia::render('welcome');
+})->name('home');
+
+Route::get("/", [LinkController::class, 'index'])
+    ->name('links.index');
+
+Route::post("/links", [LinkController::class, 'store'])
+    ->name('links.store');
+
+Route::delete("/links", [LinkController::class, 'destroy'])
+    ->name('links.destroy');
+
+Route::get("/r/{code}", [RedirectController::class])
+    ->name('redirect');
